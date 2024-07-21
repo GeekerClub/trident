@@ -1,16 +1,10 @@
 proto_library(
-    name = '_rpc_option_proto',
-    srcs = [
-        'rpc_option.proto'
-    ]
-)
-
-proto_library(
     name = 'rpc_option_proto',
     srcs = [
         'rpc_meta.proto',
+        'rpc_option.proto'
     ],
-    deps = ':_rpc_option_proto'
+    visibility = ['PUBLIC']
 )
 
 proto_library(
@@ -30,7 +24,7 @@ cc_library(
         'snappy/snappy-sinksource.cc',
         'snappy/snappy-stubs-internal.cc'
     ],
-    warning='no'
+    # warning='no'
 )
 
 cc_library(
@@ -84,9 +78,11 @@ cc_library(
         ':rpc_option_proto',
         ':builtin_service_proto',
         ':snappy',
-        '#protobuf'
+        '#protobuf',
+        '#z'
     ],
-    incs = ['asio']
+    incs = ['asio'],
+    visibility = ['PUBLIC']
 )
 
 cc_test(
