@@ -1,9 +1,16 @@
 proto_library(
+    name = '_rpc_option_proto',
+    srcs = [
+        'rpc_option.proto'
+    ]
+)
+
+proto_library(
     name = 'rpc_option_proto',
     srcs = [
         'rpc_meta.proto',
-        'rpc_option.proto'
-    ]
+    ],
+    deps = ':_rpc_option_proto'
 )
 
 proto_library(
@@ -28,6 +35,15 @@ cc_library(
 
 cc_library(
     name = 'trident',
+    hdrs = glob('*.h') + [
+        'asio/boost/config/warning_disable.hpp',
+        'asio/boost/system/config.hpp',
+        'rapidjson/rapidjson.h',
+        'rapidjson/stringbuffer.h',
+        'rapidjson/writer.h',
+        'smart_ptr/scoped_array.hpp',
+        'asio/boost/system/error_code.hpp'
+    ],
     srcs = [
         'binary_rpc_request.cc',
         'binary_rpc_request_parser.cc',
@@ -67,7 +83,8 @@ cc_library(
     deps = [
         ':rpc_option_proto',
         ':builtin_service_proto',
-        ':snappy'
+        ':snappy',
+        '#protobuf'
     ],
     incs = ['asio']
 )

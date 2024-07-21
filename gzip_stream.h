@@ -168,7 +168,7 @@ class GzipOutputStream : public AbstractCompressedOutputStream {
   GzipOutputStream(
       ZeroCopyOutputStream* sub_stream,
       Format format,
-      int buffer_size = -1) GOOGLE_ATTRIBUTE_DEPRECATED;
+      int buffer_size = -1); // GOOGLE_PROTOBUF_RUNTIME_DEPRECATED; // GOOGLE_ATTRIBUTE_DEPRECATED;
 
   virtual ~GzipOutputStream();
 

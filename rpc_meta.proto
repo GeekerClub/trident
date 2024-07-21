@@ -4,6 +4,8 @@
 //
 // 
 
+syntax="proto2";
+
 import "trident/rpc_option.proto";
 
 package trident;

@@ -7,7 +7,7 @@
 #ifndef _TRIDENT_COMMON_H_
 #define _TRIDENT_COMMON_H_
 
-#include <google/protobuf/stubs/common.h>
+#include <google/protobuf/stubs/callback.h>
 #include <trident/smart_ptr/smart_ptr.hpp>
 
 namespace std {}
